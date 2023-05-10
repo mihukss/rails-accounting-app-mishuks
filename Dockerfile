@@ -1,4 +1,4 @@
-FROM ruby:3.1.2
+FROM ruby:3.1.3
 
 ARG RAILS_ROOT=/app
 RUN apt-get update -qq && apt-get install -y nodejs tzdata imagemagick build-essential nano vim npm
