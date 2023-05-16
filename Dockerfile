@@ -1,7 +1,13 @@
 FROM ruby:3.1.3
 
-ARG RAILS_ROOT=/app
-RUN apt-get update -qq && apt-get install -y nodejs tzdata imagemagick build-essential nano vim npm
+ARG RAILS_ROOT=/app 
+RUN apt-get update -qq && apt-get install -y --no-install-recommends tzdata imagemagick build-essential nano vim
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash -\
+  && apt-get update -qq && apt-get install -qq --no-install-recommends \
+    nodejs \
+  && apt-get upgrade -qq \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN gem install bundler:2.1.4
 
