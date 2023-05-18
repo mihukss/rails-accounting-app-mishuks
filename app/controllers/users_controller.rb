@@ -22,6 +22,11 @@ class UsersController < ApplicationController
       @user.update!(permitted_params)
     end
 
+    def destroy
+      @user = User.find(params[:id])
+      @user.delete(permitted_params)
+    end
+
     private
 
     def permitted_params
