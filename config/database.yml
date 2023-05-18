@@ -4,7 +4,7 @@ default: &default
   host: db
   user: postgres
   password: postgres
-
+  
 development:
   <<: *default
   database: app_development
