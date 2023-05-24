@@ -1,4 +1,4 @@
-.card.bg-dark.rounded-0.justify-content-center
+.card.bg-dark.rounded-0
   .card-header
     = link_to root_path, class: 'navbar-brand text-white text-xl-left' do
       .d-inline.m-2
@@ -6,6 +6,6 @@
     = link_to users_path, class: 'navbar-brand text-white text-xl-left' do
       .d-inline.m-2
       = 'Users'
-    = link_to 'login/destroy', class: 'btn btn-outline-primary' do
-      .d-inline.m-0
+    = link_to 'login/destroy', class: 'navbar-button text-white text-xl-right' do
+      .d-inline.m-2
       = 'Log out'

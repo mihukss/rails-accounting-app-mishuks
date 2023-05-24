@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @users = User.where(first_name: nil)
+    @users = User.all
   end
 
   def new
