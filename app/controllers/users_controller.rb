@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   def create
     user = User.new permitted_params
     user.save!
+    redirect_to users_path
+    flash[:success] = ['New user added']
   end
 
   def edit

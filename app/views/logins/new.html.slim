@@ -6,6 +6,6 @@
           = f.input :email
           = f.input :password
           = f.submit 'Login', class: 'btn btn-primary mt-3'
-          .col-4
+        .col-10
           = google_sign_in_button 'Sign in with my Google account', class: 'btn btn-success mt-3', proceed_to: create_google_login_url
     
