@@ -4,7 +4,7 @@ class GoogleloginsController < ApplicationController
   def create
     if user = authenticate_with_google
       session[:current_user_id] = user.id
-      flash[:success] = ['You are logged in']
+      flash[:success] = ["You are logged in with #{user.email} Google Account"]
       redirect_to users_path
     else
       flash[:danger] = ['Unauthorized user']

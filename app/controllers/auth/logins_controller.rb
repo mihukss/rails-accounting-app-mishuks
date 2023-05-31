@@ -5,13 +5,13 @@ class Auth::LoginsController < ApplicationController
   
   def create
     user = User.find_by(email: permitted_params[:email])
-
     if user && user.password == permitted_params[:password]
       session[:current_user_id] = user.id
-      flash[:success] = ['You are logged in']
+      token = encode_user_data({ user_data: user.id, email: user.email })
+      flash[:success] = ["You are logged in with '#{token}' token" ]
       redirect_to users_path
-    else 
-      flash[:danger] = ['Unauthorized user']
+    else
+      flash[:danger] = ["Unauthorized user" ]
       redirect_to login_path
     end
   end

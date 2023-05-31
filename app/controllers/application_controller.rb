@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :logged_in?
+    SECRET = "mysecret"
 
     def logged_in?
       unless current_user
@@ -9,6 +10,19 @@ class ApplicationController < ActionController::Base
     end
     
     def current_user
-      User.find_by(id: session[:current_user_id])
+      @current_user ||= User.find_by(id: session[:current_user_id])
+    end
+
+    def encode_user_data(payload)
+      JWT.encode payload, SECRET, 'HS256'
+    end
+
+    def decode_user_data(token)
+      begin
+        data = JWT.decode token, SECRET, true, { algorithm: 'HS256' }
+        return data
+      rescue => e
+        puts e
+      end
     end
 end
