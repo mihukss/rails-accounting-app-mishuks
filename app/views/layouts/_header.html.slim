@@ -17,6 +17,10 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
               = 'Edit user'
     - if @current_user         
       div.nav-item
+        = "You are: #{@current_user.email} |"
+      div.nav-item.mx-2
+        = "Your role: #{@current_user.role}"
+      div.nav-item
         = link_to logout_path, class: 'btn btn-outline-secondary mx-2'
           = 'Log out'       
       div.nav-item

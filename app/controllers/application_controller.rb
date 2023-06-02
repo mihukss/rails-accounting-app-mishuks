@@ -2,11 +2,17 @@ class ApplicationController < ActionController::Base
     before_action :logged_in?
     SECRET = "mysecret"
 
+    rescue_from ApplicationPolicy::ActionForbidden, with: :render_403
+
     def logged_in?
       unless current_user
         redirect_to root_path
         flash[:danger] = ['Unauthorized user'] 
       end
+    end
+
+    def render_403
+      render 'errors/403'
     end
     
     def current_user
