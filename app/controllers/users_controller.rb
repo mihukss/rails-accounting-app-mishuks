@@ -16,7 +16,8 @@ class UsersController < ApplicationController
     user.save!
     if user.save
       token = encode_user_data({ user_data: user.id, email: user.email })
-      flash[:success] = ["You have created a user with #{token} token" ]
+      # flash[:success] = ["You have created a user with #{token} token" ]
+      flash[:success] = ["You have created a user with #{user.email} email" ]
       redirect_to users_path
     else
       flash[:danger] = ["Error"]
@@ -26,17 +27,19 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    UserPolicy.authorize!(current_user, @user, :edit)
   end
 
   def update
     @user = User.find(params[:id])
     @user.update!(permitted_params)
+    UserPolicy.authorize!(current_user, @user, :update)
     flash[:success] = "User was successfully updated."
   end
 
   def destroy
-    flash[:success] = "User was successfully destroyed."
     @user = User.find(params[:id])
+    UserPolicy.authorize!(current_user, @user, :destroy)
     @user.destroy!
     flash[:success] = "User was successfully destroyed."
     redirect_to users_path
@@ -45,6 +48,6 @@ class UsersController < ApplicationController
   private
 
   def permitted_params
-    params.require(:user).permit(:email, :password, :first_name)
+    params.require(:user).permit(:email, :password, :first_name, :role)
   end
 end

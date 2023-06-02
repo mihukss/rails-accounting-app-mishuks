@@ -86,6 +86,8 @@ GEM
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
+    enumerize (2.6.1)
+      activesupport (>= 3.2)
     erubi (1.12.0)
     execjs (2.8.1)
     faraday (2.7.4)
@@ -266,6 +268,7 @@ DEPENDENCIES
   bootstrap (~> 5.3.0.alpha3)
   byebug
   capybara (>= 3.26)
+  enumerize
   google_sign_in
   jbuilder (~> 2.7)
   jwt

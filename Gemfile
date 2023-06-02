@@ -30,6 +30,8 @@ gem 'slim'
 gem 'simple_form'
 gem 'google_sign_in'
 gem 'jwt'
+gem 'enumerize'
+
 
 
 # Reduces boot times through caching; required in config/boot.rb
