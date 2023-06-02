@@ -1,14 +1,41 @@
-.card.bg-primary.rounded-0
-  .card-header
-    = link_to root_path, class: 'navbar-brand text-white text-xl-left' do
-      .d-inline.m-2
-      = 'Accounting app'
-    = link_to users_path, class: 'navbar-brand text-white text-xl-left' do
-      .d-inline.m-2
-      = 'Users'
-    = link_to 'users/new', class: 'navbar-button text-white text-xl-right' do
-      .d-inline.m-2
-      = 'Add new user'   
-    = link_to 'login/destroy', class: 'navbar-button text-white text-xl-right' do
-      .d-inline.m-2
-      = 'Log out'
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  div.container-fluid
+    a.navbar-brand
+      = link_to users_path, class: 'navbar-brand'
+        = 'Accounting app'
+    div.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          = link_to users_path, class: 'nav-link active'
+            = 'Users'
+        li.nav-item
+          = link_to new_user_path, class: 'nav-link active'
+            = 'Add new user'
+        - if @current_user
+          li.nav-item
+            = link_to edit_user_path(@current_user), class: 'nav-link active'
+              = 'Edit user'
+    - if @current_user         
+      div.nav-item
+        = link_to logout_path, class: 'btn btn-outline-secondary mx-2'
+          = 'Log out'       
+      div.nav-item
+        = link_to delete_user_path(@current_user), data: { confirm: "Are you sure you want to delete user #{@current_user.email}?"}, class: "btn btn-xs btn-danger mx-2"
+          = 'Delete user' 
+
+
+
+/ .card.bg-success.rounded-0
+/   .card-header
+/     = link_to root_path, class: 'navbar-brand text-white text-xl-left' do
+/       .d-inline.m-2
+/       = 'Accounting app'
+/     = link_to users_path, class: 'navbar-brand text-white text-xl-left' do
+/       .d-inline.m-2
+/       = 'Users'
+/     = link_to '../users/new', class: 'navbar-button text-white text-xl-right' do
+/       .d-inline.m-2 
+/       = 'Add new user'   
+/     = link_to '../login/destroy', class: 'navbar-button text-white text-xl-right' do
+/       .d-inline.m-2
+/       = 'Log out'
