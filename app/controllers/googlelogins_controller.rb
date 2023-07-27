@@ -13,12 +13,15 @@ class GoogleloginsController < ApplicationController
   end
 
   private
-    def authenticate_with_google
-      if id_token = flash[:google_sign_in]['id_token']
-        User.find_by google_id: GoogleSignIn::Identity.new(id_token).user_id
-      elsif error = flash[:google_sign_in][:error]
-        logger.error "Google authentication error: #{error}"
-        nil
-      end
+
+  def authenticate_with_google
+    if id_token = flash[:google_sign_in]['id_token']
+      pp id_token
+      pp "======"
+      User.find_by google_id: GoogleSignIn::Identity.new(id_token).user_id
+    elsif error = flash[:google_sign_in][:error]
+      logger.error "Google authentication error: #{error}"
+      nil
     end
+  end
 end

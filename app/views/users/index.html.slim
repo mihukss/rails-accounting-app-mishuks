@@ -11,8 +11,6 @@
         th.col
           = 'Password'
         th.col
-          = 'Role'
-        th.col
           = 'Google ID'
         th.col
           = 'Created at'
@@ -26,13 +24,11 @@
           th style="font-weight: normal;"
             = "#{user.id}"
           th style="font-weight: normal;"
-            = "#{user.first_name}"
+            = "#{user.actor.first_name}"
           th style="font-weight: normal;"
             = "#{user.email}"
           th style="font-weight: normal;"
             = "#{user.password}"
-          th style="font-weight: normal;"
-            = "#{user.role}"
           th style="font-weight: normal;"
             = "#{user.google_id}"
           th style="font-weight: normal;"

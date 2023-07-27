@@ -1,0 +1,12 @@
+.container
+  .row.mt-5 
+    .col-4 
+    .col-4 
+        = simple_form_for :employee, url: employees_path do |f|
+          = f.input :first_name
+          = f.input :last_name
+          = f.input :date_of_birth
+          = f.simple_fields_for :user, @employee.user do |ff| 
+            = ff.input :email
+            = ff.input :password
+          = f.submit 'Add user', class: 'btn btn-primary mt-3'
